@@ -16,7 +16,7 @@
     <a href="/home">Home</a>
 </div>
 <div class="container">
-    <form th:object="${student}" method="post">
+    <form th:object="${student}" method="post" enctype="multipart/form-data">
         <input th:type="hidden" name="id" th:field="*{id}">
         <table>
             <tr>
@@ -38,6 +38,10 @@
             <tr>
                 <td>Phone Number</td>
                 <td><input type="text" th:field="*{phoneNumber}"></td>
+            </tr>
+            <tr>
+                <td>Image</td>
+                <td><input type="file" name="file" th:value="${images}"></td>
             </tr>
             <tr>
                 <td>Class</td>

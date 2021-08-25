@@ -5,19 +5,23 @@ import bigg.model.Student;
 import bigg.service.IClassroomService;
 import bigg.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.io.File;
 
 @Controller
 public class StudentController {
+    @Value("${file-upload}")
+    private String fileUpload;
 
     @Autowired
     IClassroomService classroomService;
@@ -46,7 +50,8 @@ public class StudentController {
     }
 
     @PostMapping("/create")
-    public ModelAndView create(@ModelAttribute Student student){
+    public ModelAndView create(@RequestParam MultipartFile file, @ModelAttribute Student student){
+        getFile(file, student);
         studentService.save(student);
         return new ModelAndView("redirect:/");
     }
@@ -60,9 +65,20 @@ public class StudentController {
     }
 
     @PostMapping("/edit/{id}")
-    public ModelAndView edit(@ModelAttribute Student student){
+    public ModelAndView edit(@RequestParam MultipartFile file,@ModelAttribute Student student){
+        getFile(file, student);
         studentService.save(student);
         return new ModelAndView("redirect:/");
+    }
+
+    private void getFile(@RequestParam MultipartFile file, @ModelAttribute Student student) {
+        String image = file.getOriginalFilename();
+        try {
+            FileCopyUtils.copy(file.getBytes(), new File(fileUpload, image));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        student.setImage(image);
     }
 
     @GetMapping("/delete/{id}")

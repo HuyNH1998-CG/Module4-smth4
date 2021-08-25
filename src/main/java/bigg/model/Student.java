@@ -13,11 +13,22 @@ public class Student {
     private String address;
     private String phoneNumber;
     private String email;
+    private String image;
     @ManyToOne
     @JoinColumn(name = "classroom_id")
     private Classroom classroom;
 
     public Student() {
+    }
+
+    public Student(String name, Date dob, String address, String phoneNumber, String email, String image, Classroom classroom) {
+        this.name = name;
+        this.dob = dob;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.image = image;
+        this.classroom = classroom;
     }
 
     public Student(String name, Date dob, String address, String phoneNumber, String email, Classroom classroom) {
@@ -83,5 +94,13 @@ public class Student {
 
     public void setClassroom(Classroom classroom) {
         this.classroom = classroom;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

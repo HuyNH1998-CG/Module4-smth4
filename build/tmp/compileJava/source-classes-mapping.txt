@@ -4,21 +4,21 @@ bigg/service/IClassroomService.java
  bigg.service.IClassroomService
 bigg/repository/IClassroomRepository.java
  bigg.repository.IClassroomRepository
-bigg/config/AppInit.java
- bigg.config.AppInit
-bigg/model/Student.java
- bigg.model.Student
-bigg/service/IGeneralService.java
- bigg.service.IGeneralService
-bigg/config/AppConfig.java
- bigg.config.AppConfig
-bigg/service/StudentService.java
- bigg.service.StudentService
-bigg/repository/IStudentRepository.java
- bigg.repository.IStudentRepository
 bigg/service/IStudentService.java
  bigg.service.IStudentService
 bigg/service/ClassroomService.java
  bigg.service.ClassroomService
+bigg/service/IGeneralService.java
+ bigg.service.IGeneralService
+bigg/repository/IStudentRepository.java
+ bigg.repository.IStudentRepository
+bigg/config/AppInit.java
+ bigg.config.AppInit
+bigg/model/Student.java
+ bigg.model.Student
 bigg/controller/StudentController.java
  bigg.controller.StudentController
+bigg/config/AppConfig.java
+ bigg.config.AppConfig
+bigg/service/StudentService.java
+ bigg.service.StudentService
