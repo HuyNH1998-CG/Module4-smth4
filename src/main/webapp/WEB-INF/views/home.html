@@ -41,11 +41,11 @@
     </table>
 </div>
 <div class="container">
-    <a th:href="@{'/home'(page=${students.number - 1})}" th:if="${students.hasPrevious()}" class="btn btn-primary">Previous</a>
+    <a th:href="@{'/'(page=${students.number - 1})}" th:if="${students.hasPrevious()}" class="btn btn-primary">Previous</a>
     <p th:if="${students.totalPages} > 0">
         <span th:text="${students.number + 1}"></span>/<span th:text="${students.totalPages}"></span>
     </p>
-    <a th:href="@{'/home'(page=${students.number + 1})}" th:if="${students.hasNext()}"
+    <a th:href="@{'/'(page=${students.number + 1})}" th:if="${students.hasNext()}"
        class="btn btn-primary">Next</a>
 </div>
 </body>
