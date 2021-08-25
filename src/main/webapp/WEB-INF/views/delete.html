@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div class="col-sm3"></div>
+    <div class="col-sm6">
+        <h1>Deleting Student</h1>
+        <h2>Are you sure you want to delete this student</h2>
+    </div>
+    <div class="col-sm3"></div>
+</div>
+<div class="container">
+    <form th:object="${student}" method="post">
+        <input th:type="hidden" name="id" th:field="*{id}">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td th:text="${student.name}"></td>
+            </tr>
+            <tr>
+                <td>Email address</td>
+                <td th:text="${student.email}"></td>
+            </tr>
+            <tr>
+                <td>Date of birth</td>
+                <td th:text="${student.dob}"></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td th:text="${student.address}"></td>
+            </tr>
+            <tr>
+                <td>Phone Number</td>
+                <td th:text="${student.phoneNumber}"></td>
+            </tr>
+            <tr>
+                <td>Class</td>
+                <td th:text="${student.classroom.name}"></td>
+            </tr>
+            <tr>
+                <td><button type="submit" class="btn btn-danger"> Yes </button></td>
+                <td><a href="/home" class="btn btn-primary"> No </a></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
