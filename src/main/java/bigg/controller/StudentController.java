@@ -30,7 +30,7 @@ public class StudentController {
         return classroomService.findAll();
     }
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public ModelAndView home(@PageableDefault(size = 5, sort = "name", direction = Sort.Direction.ASC)Pageable pageable){
         Page<Student> students = studentService.findAllPage(pageable);
         ModelAndView modelAndView = new ModelAndView("/home");
@@ -48,7 +48,7 @@ public class StudentController {
     @PostMapping("/create")
     public ModelAndView create(@ModelAttribute Student student){
         studentService.save(student);
-        return new ModelAndView("redirect:/home");
+        return new ModelAndView("redirect:/");
     }
 
     @GetMapping("/edit/{id}")
@@ -62,7 +62,7 @@ public class StudentController {
     @PostMapping("/edit/{id}")
     public ModelAndView edit(@ModelAttribute Student student){
         studentService.save(student);
-        return new ModelAndView("redirect:/home");
+        return new ModelAndView("redirect:/");
     }
 
     @GetMapping("/delete/{id}")
@@ -76,6 +76,6 @@ public class StudentController {
     @PostMapping("/delete/{id}")
     public ModelAndView deleteCustomer(@ModelAttribute Student student) {
         studentService.remove(student.getId());
-        return new ModelAndView("redirect:/home");
+        return new ModelAndView("redirect:/");
     }
 }
